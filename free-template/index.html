@@ -102,16 +102,7 @@ document.getElementById('gate-form').addEventListener('submit', async function(e
   };
 
   try {
-    // Replace FORM_ENDPOINT with a real Formspree (or similar) endpoint before going live.
-    // See README.md — "Wiring up the gated template" for setup steps.
-    const FORM_ENDPOINT = "FORM_ENDPOINT_PLACEHOLDER";
-
-    if (FORM_ENDPOINT === "FORM_ENDPOINT_PLACEHOLDER") {
-      // No backend wired up yet — go straight to the download page.
-      // Once FORM_ENDPOINT is set, this whole if-block should be removed.
-      window.location.href = "thank-you.html";
-      return;
-    }
+    const FORM_ENDPOINT = "https://formspree.io/f/xkjwowye";
 
     const res = await fetch(FORM_ENDPOINT, {
       method: "POST",
