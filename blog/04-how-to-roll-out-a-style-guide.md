@@ -15,11 +15,11 @@ A rollout needs a moment, not just a message.
 
 ## Give it a real introduction
 
-Whether it's a fifteen-minute segment in a team meeting or a dedicated short session, walk through the guide out loud with the people who'll use it. Show a few concrete before-and-after examples—an old piece of content next to how it would look under the new guide. This does two things a written announcement can't: it makes the guide feel real rather than theoretical, and it gives people a chance to ask questions on the spot instead of guessing later.
+Whether it's a 15-minute segment in a team meeting or a dedicated short session, walk through the guide out loud with the people who'll use it. Show a few concrete before-and-after examples—an old piece of content next to how it would look under the new guide. This does two things a written announcement can't: it makes the guide feel real rather than theoretical, and it gives people a chance to ask questions on the spot instead of guessing later.
 
 ## Start with the parts people will use most
 
-Nobody needs to memorize a twenty-page document on day one. Point your team to the sections they'll touch weekly—terminology, tone, and whatever channel they personally write for—and let the rest be reference material they'll grow into. A style guide should feel like a tool you dip into, not a book you're assigned to finish.
+Nobody needs to memorize a 20-page document on day one. Point your team to the sections they'll touch weekly—terminology, tone, and whatever channel they personally write for—and let the rest be reference material they'll grow into. A style guide should feel like a tool you dip into, not a book you're assigned to finish.
 
 ## Build it into your actual workflow
 

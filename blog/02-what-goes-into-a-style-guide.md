@@ -46,7 +46,7 @@ The most-used section of any style guide isn't the reference material—it's the
 
 ## The common thread
 
-Every one of these sections exists to answer the same underlying question a writer asks a dozen times a day: *how do we usually do this?* A style guide's job isn't to make writing more restrictive—it's to make that question take ten seconds to answer instead of a Slack message and a fifteen-minute wait.
+Every one of these sections exists to answer the same underlying question a writer asks a dozen times a day: *how do we usually do this?* A style guide's job isn't to make writing more restrictive—it's to make that question take 10 seconds to answer instead of a Slack message and a 15-minute wait.
 
 If you're still unsure whether you need a full style guide or something narrower, [this comparison](style-guide-brand-voice-glossary.html) breaks down how it differs from brand voice guidelines and editorial standards.
 

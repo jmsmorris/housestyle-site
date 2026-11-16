@@ -1,7 +1,7 @@
 <!-- Target keyword: signs your organization needs a style guide -->
 <!-- Funnel stage: Problem recognition -->
 
-# 7 Signs Your Organization Has Outgrown Its "Unwritten" Style Rules
+# Seven Signs Your Organization Has Outgrown Its "Unwritten" Style Rules
 
 Every organization has style rules. The question is whether they're written down anywhere—or whether they only exist in the head of whoever has been there the longest.
 

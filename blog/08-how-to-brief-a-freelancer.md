@@ -13,7 +13,7 @@ Here's what an effective voice briefing covers, whether you're onboarding a new 
 
 ## Show them, don't just tell them
 
-Pair the adjectives with two or three real examples of writing you consider on-voice, and ideally one example of something that missed the mark and why. Writers pattern-match faster from examples than from descriptions&mdash;a well-chosen sample piece of content does more work in five minutes than a paragraph of description does in twenty.
+Pair the adjectives with two or three real examples of writing you consider on-voice, and ideally one example of something that missed the mark and why. Writers pattern-match faster from examples than from descriptions&mdash;a well-chosen sample piece of content does more work in five minutes than a paragraph of description does in 20.
 
 ## Hand over your terminology, explicitly
 
