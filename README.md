@@ -10,7 +10,7 @@ A single-page static site. No build step, no dependencies to install — it's on
 ## Before you deploy
 
 1. **Replace the placeholder contact info.** Search the file for `hello@housestyle.ca` (appears twice) and swap in your real email once you've registered a domain.
-2. **Forms are HubSpot embedded forms.** The contact form (`index.html`) and the free-template signup (`free-template/index.html`) load HubSpot's form embed (portal `343915332`, region `na3`). Form IDs are in each page's `hbspt.forms.create` call. HubSpot's default styling is switched off and the forms are styled in `style.css` under `.hs-form-wrap`. Fields, labels, Captcha and notifications are managed in HubSpot (Marketing > Forms), not in the site code. The free-template form redirects to `thank-you.html` after a successful submit.
+2. **Forms are HubSpot embedded forms.** The contact form (`index.html`) and the free-template signup (`free-template/index.html`) load HubSpot's form embed (portal `343915332`, region `na3`). Form IDs are in each page's `hbspt.forms.create` call. HubSpot draws the forms inside an iframe, so their look (colors, fonts, buttons) is set in HubSpot's form editor under the Style tab, not in `style.css`. Fields, labels, Captcha and notifications are managed there too. After a successful submit, the free-template page listens for HubSpot's submit message and sends the visitor to the PDF.
 3. **Domain.** Once you've confirmed availability (see your registrar search), point it at wherever you deploy.
 
 ## Deploy it — pick one
@@ -63,7 +63,7 @@ A single-page static site. No build step, no dependencies to install — it's on
 
 ### Important: this isn't really gated yet
 
-A static site has no server, so there's no way for `index.html` to actually check that someone submitted the form before letting them reach `thank-you.html` — right now, anyone who guesses or is given the `thank-you.html` URL directly can download the PDF without ever entering an email. The form currently redirects to the download page regardless of whether it successfully submits anywhere, so the site works as a **preview** of the funnel, not a functioning one.
+A static site has no server, so there's no way for `index.html` to actually check that someone submitted the form before letting them reach `thank-you.html` — right now, anyone who guesses or is given the `thank-you.html` URL directly can download the PDF without ever entering an email. The form redirects to the PDF only after HubSpot confirms the submission, but the PDF itself remains a public file.
 
 **Signups are captured in HubSpot.** The embedded form on `free-template/index.html` submits to HubSpot and only redirects to the download page if HubSpot accepts it. The page itself still isn't a true gate, since the PDF is a public file.
 

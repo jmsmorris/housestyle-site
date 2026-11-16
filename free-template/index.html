@@ -75,33 +75,26 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-var thankYouUrl = new URL('thank-you.html', window.location.href).href;
+var templateUrl = new URL('Housestyle-Co-Style-Guide-Starter-Template.pdf', window.location.href).href;
 var redirected = false;
-function goToThankYou(){
-  if (redirected) return;
-  redirected = true;
-  window.location.href = thankYouUrl;
-}
+
+// HubSpot draws the form inside an iframe and tells this page about
+// submissions with a window message, so listen for that rather than relying
+// on a callback passed to the embed.
+window.addEventListener('message', function(event){
+  var d = event.data;
+  if (!d || redirected) return;
+  if (d.type === 'hsFormCallback' && d.eventName === 'onFormSubmitted') {
+    redirected = true;
+    window.location.href = templateUrl;
+  }
+});
 
 hbspt.forms.create({
   region: 'na3',
   portalId: '343915332',
   formId: '779cf74d-d111-4294-a57d-38f63f5cb874',
   target: '#hs-template-form',
-  css: '',
-  cssRequired: '',
-  redirectUrl: thankYouUrl,
-  onFormSubmitted: goToThankYou,
-});
-
-// Fallback: HubSpot also announces submissions with a window message, which
-// fires for every embed version even when the callback above does not.
-window.addEventListener('message', function(event){
-  var d = event.data;
-  if (d && d.type === 'hsFormCallback' && d.eventName === 'onFormSubmitted' &&
-      (!d.id || d.id === '779cf74d-d111-4294-a57d-38f63f5cb874')) {
-    goToThankYou();
-  }
 });
 </script>
 </body>
