@@ -22,16 +22,11 @@
 
 <style>
 .gate-wrap{max-width:560px;}
-.gate-form{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
-.gate-form label{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);}
-.gate-form input{font-family:'Inter',sans-serif;font-size:15px;padding:12px 14px;border:1px solid var(--ink-soft);border-radius:3px;background:var(--paper-2);color:var(--ink);}
-.gate-form input:focus{outline:2px solid var(--redline);outline-offset:1px;}
 .gate-note{font-size:13px;color:var(--muted);margin-top:14px;}
 .includes{margin:40px 0;padding:28px;background:var(--paper-2);border-radius:4px;}
 .includes-title{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--stamp);margin:0 0 16px;}
 .includes ul{margin:0;padding-left:20px;}
 .includes li{font-size:15px;line-height:1.7;color:var(--ink-soft);}
-#form-error{color:var(--redline);font-size:13px;display:none;margin-top:4px;}
 </style>
 </head>
 <body>
@@ -64,18 +59,7 @@
     </ul>
   </div>
 
-  <form id="gate-form" class="gate-form">
-    <div>
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required placeholder="you@organization.org">
-    </div>
-    <div>
-      <label for="org">Organization (optional)</label>
-      <input id="org" name="organization" type="text" placeholder="Your organization">
-    </div>
-    <button class="btn btn-primary" type="submit" style="align-self:flex-start;">Get the template</button>
-    <p id="form-error">Something went wrong—try again, or email hello@housestyle.ca directly.</p>
-  </form>
+  <div class="hs-form-wrap" id="hs-template-form"></div>
 
   <p class="gate-note">No spam—just the template, and occasionally a note when something like this is worth sharing. Unsubscribe anytime.</p>
 
@@ -87,38 +71,18 @@
   </footer>
 
 </div>
+<script charset="utf-8" src="https://js.hsforms.net/forms/embed/v2.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('gate-form').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const form = e.target;
-  const errorEl = document.getElementById('form-error');
-  errorEl.style.display = 'none';
-
-  const parts = [
-    {name: 'email', value: form.email.value},
-    {name: 'company', value: form.organization.value},
-  ].filter(f => f.value);
-
-  try {
-    const res = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/343915332/779cf74d-d111-4294-a57d-38f63f5cb874', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        fields: parts,
-        context: {pageUri: window.location.href, pageName: document.title},
-      }),
-    });
-
-    if (res.ok) {
-      window.location.href = 'thank-you.html';
-    } else {
-      errorEl.style.display = 'block';
-    }
-  } catch (err) {
-    errorEl.style.display = 'block';
-  }
+hbspt.forms.create({
+  region: 'na3',
+  portalId: '343915332',
+  formId: '779cf74d-d111-4294-a57d-38f63f5cb874',
+  target: '#hs-template-form',
+  css: '',
+  cssRequired: '',
+  onFormSubmitted: function(){ window.location.href = 'thank-you.html'; },
 });
 </script>
 </body>

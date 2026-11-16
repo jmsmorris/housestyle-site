@@ -183,26 +183,7 @@
     <h2 class="closing-line">Let's put it in writing.</h2>
     <p class="section-sub" style="margin-bottom:0;">Tell me a bit about your organization and what you're working with today.</p>
 
-    <form id="contact-form" class="contact-form">
-      <div>
-        <label for="name">Name</label><br>
-        <input id="name" name="name" type="text" required>
-      </div>
-      <div>
-        <label for="org">Organization</label><br>
-        <input id="org" name="organization" type="text" required>
-      </div>
-      <div>
-        <label for="email">Email</label><br>
-        <input id="email" name="email" type="email" required>
-      </div>
-      <div>
-        <label for="message">What's going on with your writing today?</label><br>
-        <textarea id="message" name="message"></textarea>
-      </div>
-      <button class="btn btn-primary" type="submit" style="align-self:flex-start;">Send</button>
-      <p id="form-status" style="font-size:14px;margin:0;min-height:20px;"></p>
-    </form>
+    <div class="hs-form-wrap" id="hs-contact-form"></div>
   </section>
 
   </main>
@@ -215,50 +196,17 @@
   </footer>
 
 </div>
+<script charset="utf-8" src="https://js.hsforms.net/forms/embed/v2.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('contact-form').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const form = e.target;
-  const status = document.getElementById('form-status');
-  const button = form.querySelector('button[type="submit"]');
-  status.textContent = '';
-  button.disabled = true;
-
-  const fullName = form.name.value.trim();
-  const space = fullName.indexOf(' ');
-  const firstname = space === -1 ? fullName : fullName.slice(0, space);
-  const lastname = space === -1 ? '' : fullName.slice(space + 1).trim();
-
-  const fields = [
-    {name: 'firstname', value: firstname},
-    {name: 'lastname', value: lastname},
-    {name: 'email', value: form.email.value},
-    {name: 'company', value: form.organization.value},
-    {name: 'message', value: form.message.value},
-  ].filter(f => f.value);
-
-  try {
-    const res = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/343915332/c9b7d177-c996-47ec-8a2b-8319d37bb933', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        fields: fields,
-        context: {pageUri: window.location.href, pageName: document.title},
-      }),
-    });
-
-    if (res.ok) {
-      form.reset();
-      status.textContent = 'Thanks—your message is in. I\'ll be in touch soon.';
-    } else {
-      status.textContent = 'Something went wrong—please email hello@housestyle.ca directly.';
-    }
-  } catch (err) {
-    status.textContent = 'Something went wrong—please email hello@housestyle.ca directly.';
-  }
-  button.disabled = false;
+hbspt.forms.create({
+  region: 'na3',
+  portalId: '343915332',
+  formId: 'c9b7d177-c996-47ec-8a2b-8319d37bb933',
+  target: '#hs-contact-form',
+  css: '',
+  cssRequired: '',
 });
 </script>
 </body>
