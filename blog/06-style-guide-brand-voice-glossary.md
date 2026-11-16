@@ -13,7 +13,7 @@ A style guide is the umbrella term, and usually the most complete one. It covers
 
 ## Brand voice guidelines
 
-Usually a narrower slice&mdash;just the voice and tone section of a full style guide, sometimes with visual brand elements (logo, color) mixed in. If your document mostly answers "how should we sound?" without touching grammar or terminology, "brand voice guidelines" is probably the more accurate name for what you have. It's not wrong to want just this piece&mdash;plenty of organizations start here.
+Usually a narrower slice&mdash;just the voice and tone section of a full style guide, sometimes with visual brand elements (logo, colour) mixed in. If your document mostly answers "how should we sound?" without touching grammar or terminology, "brand voice guidelines" is probably the more accurate name for what you have. It's not wrong to want just this piece&mdash;plenty of organizations start here.
 
 ## Tone of voice document
 

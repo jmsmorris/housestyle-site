@@ -29,7 +29,7 @@ Every piece of published content is a small deposit into how an organization is 
 
 ## What this costs, put simply
 
-None of this shows up on a budget line labeled "inconsistency." It shows up as staff hours that feel slightly less efficient than they should be, freelancer invoices that run a little higher than expected, and a brand that never quite feels as polished as the work behind it deserves.
+None of this shows up on a budget line labelled "inconsistency." It shows up as staff hours that feel slightly less efficient than they should be, freelancer invoices that run a little higher than expected, and a brand that never quite feels as polished as the work behind it deserves.
 
 ## What it costs to fix
 

@@ -10,7 +10,7 @@ A single-page static site. No build step, no dependencies to install — it's on
 ## Before you deploy
 
 1. **Replace the placeholder contact info.** Search the file for `hello@housestyle.ca` (appears twice) and swap in your real email once you've registered a domain.
-2. **Forms are HubSpot embedded forms.** The contact form (`index.html`) and the free-template signup (`free-template/index.html`) load HubSpot's form embed (portal `343915332`, region `na3`). Form IDs are in each page's `hbspt.forms.create` call. HubSpot draws the forms inside an iframe, so their look (colors, fonts, buttons) is set in HubSpot's form editor under the Style tab, not in `style.css`. Fields, labels, Captcha and notifications are managed there too. After a successful submit, the free-template page listens for HubSpot's submit message and sends the visitor to the PDF.
+2. **Forms are HubSpot embedded forms.** The contact form (`index.html`) and the free-template signup (`free-template/index.html`) load HubSpot's form embed (portal `343915332`, region `na3`). Form IDs are in each page's `hbspt.forms.create` call. HubSpot draws the forms inside an iframe, so their look (colours, fonts, buttons) is set in HubSpot's form editor under the Style tab, not in `style.css`. Fields, labels, Captcha and notifications are managed there too. After a successful submit, the free-template page listens for HubSpot's submit message and sends the visitor to the PDF.
 3. **Domain.** Once you've confirmed availability (see your registrar search), point it at wherever you deploy.
 
 ## Deploy it — pick one
