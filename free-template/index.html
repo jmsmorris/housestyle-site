@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Style Guide Starter Template—Housestyle Co.</title>
+<meta name="description" content="A free fill-in-the-blank style guide starter template, covering voice, tone, terminology, and formatting basics—ready in under an hour.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://housestyle.ca/free-template/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://housestyle.ca/free-template/">
+<meta property="og:site_name" content="Housestyle Co.">
+<meta property="og:title" content="Free Style Guide Starter Template">
+<meta property="og:description" content="A fill-in-the-blank first draft of your organization's style guide—free, ready in under an hour.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23EDE4C8%22/><rect x=%2222%22 y=%2222%22 width=%2256%22 height=%2256%22 fill=%22none%22 stroke=%22%23B8402C%22 stroke-width=%228%22/></svg>">
+
+<style>
+.gate-wrap{max-width:560px;}
+.gate-form{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
+.gate-form label{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);}
+.gate-form input{font-family:'Inter',sans-serif;font-size:15px;padding:12px 14px;border:1px solid var(--ink-soft);border-radius:3px;background:var(--paper-2);color:var(--ink);}
+.gate-form input:focus{outline:2px solid var(--redline);outline-offset:1px;}
+.gate-note{font-size:13px;color:var(--muted);margin-top:14px;}
+.includes{margin:40px 0;padding:28px;background:var(--paper-2);border-radius:4px;}
+.includes-title{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--stamp);margin:0 0 16px;}
+.includes ul{margin:0;padding-left:20px;}
+.includes li{font-size:15px;line-height:1.7;color:var(--ink-soft);}
+#form-error{color:var(--redline);font-size:13px;display:none;margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="wrap gate-wrap">
+
+  <nav class="nav" aria-label="Primary">
+    <a class="wordmark" href="../index.html">housestyle<span>.</span>co</a>
+    <div class="navlinks">
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">free template</div>
+    <h1 class="headword" style="font-size:44px;">The Style Guide<br>Starter Template</h1>
+    <p class="tagline">So you always sound like yourselves—starting today.</p>
+    <p class="definition" style="font-size:17px;">
+      A fill-in-the-blank first draft covering voice &amp; tone, terminology, and formatting basics—the
+      core of what belongs in every organization's style guide. Ready in under an hour.
+    </p>
+  </header>
+
+  <div class="includes">
+    <p class="includes-title">What's inside</p>
+    <ul>
+      <li>Voice &amp; tone worksheet, with tone-shift prompts for routine, celebratory, and sensitive updates</li>
+      <li>A terminology section for your program names and preferred language</li>
+      <li>A formatting basics checklist (Oxford comma, numerals, dates, acronyms)</li>
+      <li>An editorial quick-check to run before anything publishes</li>
+    </ul>
+  </div>
+
+  <form id="gate-form" class="gate-form">
+    <div>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="you@organization.org">
+    </div>
+    <div>
+      <label for="org">Organization (optional)</label>
+      <input id="org" name="organization" type="text" placeholder="Your organization">
+    </div>
+    <button class="btn btn-primary" type="submit" style="align-self:flex-start;">Get the template</button>
+    <p id="form-error">Something went wrong—try again, or email hello@housestyle.ca directly.</p>
+  </form>
+
+  <p class="gate-note">No spam—just the template, and occasionally a note when something like this is worth sharing. Unsubscribe anytime.</p>
+
+  <footer style="margin-top:60px;">
+    <div class="footer-meta">
+      <span>&copy; <span id="year"></span> Housestyle Co.</span>
+      <span>hello@housestyle.ca</span>
+    </div>
+  </footer>
+
+</div>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.getElementById('gate-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const errorEl = document.getElementById('form-error');
+  errorEl.style.display = 'none';
+
+  const data = {
+    email: form.email.value,
+    organization: form.organization.value,
+  };
+
+  try {
+    // Replace FORM_ENDPOINT with a real Formspree (or similar) endpoint before going live.
+    // See README.md — "Wiring up the gated template" for setup steps.
+    const FORM_ENDPOINT = "FORM_ENDPOINT_PLACEHOLDER";
+
+    if (FORM_ENDPOINT === "FORM_ENDPOINT_PLACEHOLDER") {
+      // No backend wired up yet — go straight to the download page.
+      // Once FORM_ENDPOINT is set, this whole if-block should be removed.
+      window.location.href = "thank-you.html";
+      return;
+    }
+
+    const res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      window.location.href = "thank-you.html";
+    } else {
+      errorEl.style.display = 'block';
+    }
+  } catch (err) {
+    errorEl.style.display = 'block';
+  }
+});
+</script>
+</body>
+</html>
