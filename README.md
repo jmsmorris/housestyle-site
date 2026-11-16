@@ -10,7 +10,7 @@ A single-page static site. No build step, no dependencies to install — it's on
 ## Before you deploy
 
 1. **Replace the placeholder contact info.** Search the file for `hello@housestyle.ca` (appears twice) and swap in your real email once you've registered a domain.
-2. **The contact form uses `mailto:`.** This opens the visitor's own email client instead of submitting silently — it works, but it's not the smoothest experience and won't work at all on some mobile setups. For a real submit-and-done form, swap the `<form>` action for a free form backend like [Formspree](https://formspree.io) (no server needed — just change the `action` URL and add your endpoint) or a Vercel/Netlify serverless function if you want more control.
+2. **Forms submit to HubSpot.** The contact form (`index.html`) and the free-template signup (`free-template/index.html`) post directly to HubSpot's Forms API (portal `343915332`). Form IDs are in each file's `fetch` URL. Field names sent: `firstname`, `lastname`, `email`, `company`, `message` (contact) and `email`, `company` (template). If you rename or remove a field in HubSpot, update the matching name in the script, or submissions will be rejected.
 3. **Domain.** Once you've confirmed availability (see your registrar search), point it at wherever you deploy.
 
 ## Deploy it — pick one
@@ -65,12 +65,9 @@ A single-page static site. No build step, no dependencies to install — it's on
 
 A static site has no server, so there's no way for `index.html` to actually check that someone submitted the form before letting them reach `thank-you.html` — right now, anyone who guesses or is given the `thank-you.html` URL directly can download the PDF without ever entering an email. The form currently redirects to the download page regardless of whether it successfully submits anywhere, so the site works as a **preview** of the funnel, not a functioning one.
 
-**To make it real, you need an email capture backend.** Two straightforward options:
+**Signups are captured in HubSpot.** The form on `free-template/index.html` submits to HubSpot and only redirects to the download page if HubSpot accepts it. The page itself still isn't a true gate, since the PDF is a public file.
 
-1. **Formspree** (fastest) — sign up free, create a form, get an endpoint URL, then open `free-template/index.html` and replace `FORM_ENDPOINT_PLACEHOLDER` with your real endpoint (search for that string in the file — it's called out in a comment). Once that's set, remove the `if (FORM_ENDPOINT === "FORM_ENDPOINT_PLACEHOLDER")` block right below it in the same script, since that block exists only to let the page work before you've wired anything up.
-2. **A real email list tool** (Mailchimp, ConvertKit, etc.) — better long-term, since it also gives you a list to send future content to, not just a one-time capture. These tools generate their own embeddable form code, which would replace the current `<form>` block entirely.
-
-Either way, once real signups are flowing in, consider also removing the direct link to the PDF from search indexing (the page already has `noindex` set, which stops Google from indexing it — but that's not the same as making it inaccessible to someone with the link).
+Once real signups are flowing in, consider also removing the direct link to the PDF from search indexing (the page already has `noindex` set, which stops Google from indexing it — but that's not the same as making it inaccessible to someone with the link).
 
 ### Linking it up
 Right now this page isn't linked from anywhere else on the site — homepage, nav, or blog posts. It exists but won't get discovered until you add a link (a blog post CTA, a homepage banner, or a LinkedIn post pointing straight at `free-template/index.html` all work).

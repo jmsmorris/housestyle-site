@@ -96,22 +96,23 @@ document.getElementById('gate-form').addEventListener('submit', async function(e
   const errorEl = document.getElementById('form-error');
   errorEl.style.display = 'none';
 
-  const data = {
-    email: form.email.value,
-    organization: form.organization.value,
-  };
+  const parts = [
+    {name: 'email', value: form.email.value},
+    {name: 'company', value: form.organization.value},
+  ].filter(f => f.value);
 
   try {
-    const FORM_ENDPOINT = "https://formspree.io/f/xkjwowye";
-
-    const res = await fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json", "Accept": "application/json"},
-      body: JSON.stringify(data),
+    const res = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/343915332/779cf74d-d111-4294-a57d-38f63f5cb874', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        fields: parts,
+        context: {pageUri: window.location.href, pageName: document.title},
+      }),
     });
 
     if (res.ok) {
-      window.location.href = "thank-you.html";
+      window.location.href = 'thank-you.html';
     } else {
       errorEl.style.display = 'block';
     }

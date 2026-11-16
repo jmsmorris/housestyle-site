@@ -217,6 +217,49 @@
 </div>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+document.getElementById('contact-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const status = document.getElementById('form-status');
+  const button = form.querySelector('button[type="submit"]');
+  status.textContent = '';
+  button.disabled = true;
+
+  const fullName = form.name.value.trim();
+  const space = fullName.indexOf(' ');
+  const firstname = space === -1 ? fullName : fullName.slice(0, space);
+  const lastname = space === -1 ? '' : fullName.slice(space + 1).trim();
+
+  const fields = [
+    {name: 'firstname', value: firstname},
+    {name: 'lastname', value: lastname},
+    {name: 'email', value: form.email.value},
+    {name: 'company', value: form.organization.value},
+    {name: 'message', value: form.message.value},
+  ].filter(f => f.value);
+
+  try {
+    const res = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/343915332/c9b7d177-c996-47ec-8a2b-8319d37bb933', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        fields: fields,
+        context: {pageUri: window.location.href, pageName: document.title},
+      }),
+    });
+
+    if (res.ok) {
+      form.reset();
+      status.textContent = 'Thanks—your message is in. I\'ll be in touch soon.';
+    } else {
+      status.textContent = 'Something went wrong—please email hello@housestyle.ca directly.';
+    }
+  } catch (err) {
+    status.textContent = 'Something went wrong—please email hello@housestyle.ca directly.';
+  }
+  button.disabled = false;
+});
 </script>
 </body>
 </html>
