@@ -78,3 +78,7 @@ Right now this page isn't linked from anywhere else on the site — homepage, na
 - Everything is inline in one file on purpose — easiest to hand off, easiest to deploy anywhere, nothing to break.
 - Fonts (Fraunces, Inter, IBM Plex Mono) load from Google Fonts via `@import` — needs an internet connection to render correctly; fine for a live site, just know it won't render fonts correctly if opened fully offline.
 - Fully responsive down to mobile — test the nav and step grid at narrow widths after you deploy.
+
+## The pricing page (`pricing/`)
+
+- `pricing/index.html` — starting ("from") prices for the Voice Check, Foundations, Overhaul, Voice Partner and add-ons, in Canadian dollars plus HST. Its styles are in the "pricing page" section at the end of `style.css`. Every page's nav links to it. Full prices and tiers live in the Housestyle pricing scheme doc, not on the site.
