@@ -58,7 +58,7 @@
       <span class="price-from">from</span>
       <span class="price-num">C$950</span>
     </div>
-    <a class="btn btn-primary" href="../index.html#contact">Book a Voice Check</a>
+    <a class="btn btn-primary" href="../index.html#contact" data-open-voice-check>Book a Voice Check</a>
   </div>
 
   <section class="services priced" id="packages">
@@ -156,6 +156,51 @@
   </footer>
 
 </div>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<dialog class="form-dialog" id="voice-check-dialog" aria-labelledby="voice-check-title">
+  <button type="button" class="dialog-close" aria-label="Close">&times;</button>
+  <p class="template-cta-label">Start here</p>
+  <h2 class="dialog-title" id="voice-check-title">Book a Voice Check</h2>
+  <p class="dialog-body">Tell me a bit about your organization, and I'll be in touch to set up the call.</p>
+  <div class="hs-form-wrap" id="hs-voice-check-form"></div>
+</dialog>
+
+<script charset="utf-8" src="https://js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+(function(){
+  var dialog = document.getElementById('voice-check-dialog');
+  var formMade = false;
+
+  function makeForm(){
+    if (formMade || !window.hbspt) return;
+    formMade = true;
+    hbspt.forms.create({
+      region: 'na3',
+      portalId: '343915332',
+      formId: '2a998662-f954-4d95-bf61-6f04a4cb6fa0',
+      target: '#hs-voice-check-form',
+      css: '',
+      cssRequired: '',
+    });
+  }
+
+  document.querySelectorAll('[data-open-voice-check]').forEach(function(link){
+    link.addEventListener('click', function(event){
+      // Without dialog support or the HubSpot script, fall back to the contact form.
+      if (!dialog.showModal || !window.hbspt) return;
+      event.preventDefault();
+      makeForm();
+      dialog.showModal();
+    });
+  });
+
+  dialog.querySelector('.dialog-close').addEventListener('click', function(){ dialog.close(); });
+  // Close when the dimmed area outside the box is clicked.
+  dialog.addEventListener('click', function(event){
+    if (event.target === dialog) dialog.close();
+  });
+})();
+</script>
 </body>
 </html>
