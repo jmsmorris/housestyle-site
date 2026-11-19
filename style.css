@@ -23,6 +23,9 @@ a{color:inherit;}
 .navlinks{display:flex;gap:28px;font-size:14px;color:var(--ink-soft);}
 .navlinks a{text-decoration:none;}
 .navlinks a:hover{color:var(--redline);}
+.navlinks{align-items:center;}
+.navlinks a.nav-cta{color:var(--ink);border:1px solid var(--ink);border-radius:3px;padding:7px 14px;}
+.navlinks a.nav-cta:hover{background:var(--paper-2);color:var(--ink);}
 
 /* hero: dictionary entry */
 .hero{padding:72px 0 40px;}
@@ -85,6 +88,9 @@ section{scroll-margin-top:90px;}
 .contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--redline);outline-offset:1px;}
 
 footer{padding:0 0 60px;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{text-decoration:none;}
+.footer-links a:hover{color:var(--redline);}
 .footer-meta{margin-top:16px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
 
 /* ---- blog-specific additions ---- */
